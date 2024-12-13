@@ -16,7 +16,6 @@ func viselitsa() {
 		"tablet", "panda", "moscow", "chef", "printer",
 	}
 
-	// Инициализируем генератор случайных чисел один раз в начале
 	rand.Seed(time.Now().UnixNano())
 
 	hangman_stages := []string{
@@ -92,11 +91,9 @@ __|______
 		used_letters := make(map[rune]bool)
 		attempts := 6
 
-		// Показываем текущее состояние виселицы в начале игры
 		fmt.Println(hangman_stages[0])
 
 		for attempts > 0 {
-			// Показываем текущее состояние слова
 			word_progress := ""
 			for _, letter := range random_word {
 				if guessed_letters[letter] {
@@ -112,7 +109,7 @@ __|______
 
 			var answer string
 			fmt.Scan(&answer)
-			answer = strings.ToLower(answer) // Преобразуем ввод в нижний регистр
+			answer = strings.ToLower(answer)
 
 			if len(answer) != 1 {
 				fmt.Println("You only need to type 1 letter!")
@@ -121,7 +118,6 @@ __|______
 
 			first_answer := rune(answer[0])
 
-			// Проверяем, является ли символ буквой
 			if first_answer < 'a' || first_answer > 'z' {
 				fmt.Println("Please enter a valid letter!")
 				continue
